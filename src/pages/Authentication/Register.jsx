@@ -1,7 +1,37 @@
 import { FaArrowRight, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state || "/";
+  const { googleLogin, createUser, updateUserProfile, user, setUser } =
+    useAuth();
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photo = form.photo.value;
+    try {
+      // create user from firebase
+      const result = await createUser(email, password);
+      await updateUserProfile({ displayName: name, photoURL: photo });
+
+      // Optimistic UI - update state
+      setUser({ ...result?.user, displayName: name, photoURL: photo });
+      toast.success("User Created Successfully", { autoClose: 1500 });
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message, { autoClose: 1500 });
+    }
+  };
+
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-170px)]">
       <div className="">

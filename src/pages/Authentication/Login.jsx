@@ -18,14 +18,35 @@ const Login = () => {
   // handle google login
   const handleGoogleLogin = async () => {
     try {
+      // google sign in from firebase
       await googleLogin();
-      toast.success("Login Successful");
+      toast.success("Login Successful", { autoClose: 1500 });
       navigate(from, { replace: true });
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error(error.message, { autoClose: 1500 });
     }
   };
+
+  // handle login
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    try {
+      // sign in from firebase
+      await signInUser(email, password);
+      toast.success("Login Successful", { autoClose: 1500 });
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message, { autoClose: 1500 });
+    }
+  };
+
+  if (user || loading) return;
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-170px)]">
@@ -50,7 +71,7 @@ const Login = () => {
 
           <div className="divider">or</div>
 
-          <form>
+          <form onSubmit={handleLogin}>
             <div className="grid grid-cols-1 gap-6 mt-4 ">
               <div>
                 <label
