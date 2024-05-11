@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "./../hooks/useAuth";
 import ThemeController from "./ThemeController";
+import { FaBars } from "react-icons/fa";
 
 const Navbar = () => {
   const { userSignOut, setUser, user, isHovered, setIsHovered } = useAuth();
@@ -37,8 +38,8 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-slate-900 dark:text-orange-400 border-b-4 border-orange-400 hover:border-slate-300"
-              : "hover:text-slate-900 hover:bg-orange-400 dark:text-orange-400 dark:hover:text-slate-900"
+              ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+              : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
           }>
           Home
         </NavLink>
@@ -51,8 +52,8 @@ const Navbar = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-slate-900 dark:text-orange-400 border-b-4 border-orange-400 hover:border-slate-300"
-              : "hover:text-slate-900 hover:bg-orange-400 dark:text-orange-400 dark:hover:text-slate-900"
+              ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+              : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
           }>
           Services
         </NavLink>
@@ -60,14 +61,14 @@ const Navbar = () => {
       <li className="relative">
         <Link
           onMouseOver={handleMouseEnter}
-          className="text-slate-900 dark:text-orange-400  hover:bg-orange-400">
+          className="text-slate-900 px-2 py-1.5 rounded-md dark:text-orange-400  hover:bg-orange-400 dar hover:dark:text-slate-900">
           Dashboard
         </Link>
         {isHovered && (
           <ul
             tabIndex={0}
             onMouseLeave={handleMouseLeave}
-            className="menu menu-sm dropdown-content mt-12 z-[1] py-3 px-4 shadow dark:bg-slate-900 rounded-md w-56 absolute space-y-2">
+            className="menu menu-sm dropdown-content mt-5 z-[1] py-3 px-4 shadow dark:bg-slate-900 rounded-md w-56 absolute space-y-2">
             <li>
               <NavLink
                 to="/add-service"
@@ -75,8 +76,8 @@ const Navbar = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-slate-900 dark:text-orange-400 border-b-4 border-orange-400 hover:border-slate-300"
-                    : "hover:text-slate-900 hover:bg-orange-400 dark:text-orange-400 dark:hover:text-slate-900"
+                    ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+                    : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
                 }>
                 Add Service
               </NavLink>
@@ -88,8 +89,8 @@ const Navbar = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-slate-900 dark:text-orange-400 border-b-4 border-orange-400 hover:border-slate-300"
-                    : "hover:text-slate-900 hover:bg-orange-400 dark:text-orange-400 dark:hover:text-slate-900"
+                    ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+                    : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
                 }>
                 Manage Service
               </NavLink>
@@ -101,8 +102,8 @@ const Navbar = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-slate-900 dark:text-orange-400 border-b-4 border-orange-400 hover:border-slate-300"
-                    : "hover:text-slate-900 hover:bg-orange-400 dark:text-orange-400 dark:hover:text-slate-900"
+                    ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+                    : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
                 }>
                 Booked-Services
               </NavLink>
@@ -114,8 +115,8 @@ const Navbar = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-slate-900 dark:text-orange-400 border-b-4 border-orange-400 hover:border-slate-300"
-                    : "hover:text-slate-900 hover:bg-orange-400 dark:text-orange-400 dark:hover:text-slate-900"
+                    ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+                    : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
                 }>
                 Service-To-Do
               </NavLink>
@@ -123,38 +124,93 @@ const Navbar = () => {
           </ul>
         )}
       </li>
-      {user && (
-        <>
-          <li>
-            <NavLink
-              to="/add-craft"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? "text-slate-900 dark:text-orange-400 border-b-4 border-orange-400 hover:border-slate-300"
-                  : "hover:text-slate-900 hover:bg-orange-400 dark:text-orange-400 dark:hover:text-slate-900"
-              }>
-              Add Craft Item
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/my-craft-list"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? "text-slate-900 dark:text-orange-400 border-b-4 border-orange-400 hover:border-slate-300"
-                  : "hover:text-slate-900 hover:bg-orange-400 dark:text-orange-400 dark:hover:text-slate-900"
-              }>
-              My Art & Craft List
-            </NavLink>
-          </li>
-        </>
-      )}
     </>
   );
+
+  const navList2 = (
+    <>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+              : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
+          }>
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/services"
+          onMouseOver={handleMouseEnterRemove}
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+              : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
+          }>
+          Services
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/add-service"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+              : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
+          }>
+          Add Service
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/manage-service"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+              : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
+          }>
+          Manage Service
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/booked-services"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+              : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
+          }>
+          Booked-Services
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/service-to-do"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+              : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
+          }>
+          Service-To-Do
+        </NavLink>
+      </li>
+    </>
+  );
+
   return (
     <div
       onMouseLeave={handleMouseLeave}
@@ -165,24 +221,12 @@ const Navbar = () => {
             tabIndex={0}
             role="button"
             className="btn btn-ghost min-h-9 h-9 px-2  md:hidden hover:bg-orange-500 hover:text-slate-900">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="2 2 20 20"
-              stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
+            <FaBars size={20} />
           </div>
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 space-y-2">
-            {navList}
+            {navList2}
           </ul>
         </div>
         <Link
@@ -196,9 +240,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden md:flex">
-        <ul className="menu menu-horizontal text-sm font-semibold px-1 space-x-2">
-          {navList}
-        </ul>
+        <ul className=" flex gap-2 text-sm font-semibold *:p-2 ">{navList}</ul>
       </div>
       <div className="navbar-end  space-x-2">
         {/*Theme toggle Controller*/}
