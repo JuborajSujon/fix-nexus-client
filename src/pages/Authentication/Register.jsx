@@ -1,44 +1,19 @@
 import { FaArrowRight, FaGoogle } from "react-icons/fa";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
-const Login = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { signInUser, googleLogin, user, loading } = useAuth();
-  useEffect(() => {
-    if (user) {
-      navigate("/");
-    }
-  }, [navigate, user]);
-  const from = location.state || "/";
-
-  // handle google login
-  const handleGoogleLogin = async () => {
-    try {
-      await googleLogin();
-      toast.success("Login Successful");
-      navigate(from, { replace: true });
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message);
-    }
-  };
-
+const Register = () => {
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-170px)]">
       <div className="">
         <section className="max-w-4xl w-full p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
           <div>
             <h2 className="text-3xl font-semibold text-gray-700 capitalize dark:text-white">
-              Login
+              Register
             </h2>
             <p className="text-gray-500 dark:text-gray-300 mt-4">
               Enter your credentials to access FixNexus.
             </p>
-            <div onClick={handleGoogleLogin}>
+            <div>
               <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-md border border-n30 bg-white py-3">
                 <FaGoogle className="text-green-500" />
                 <span className="text-base font-bold dark:text-slate-900 ">
@@ -51,7 +26,34 @@ const Login = () => {
           <div className="divider">or</div>
 
           <form>
-            <div className="grid grid-cols-1 gap-6 mt-4 ">
+            <div className="grid grid-cols-1 gap-3 mt-4 ">
+              <div>
+                <label
+                  className="text-gray-900 font-bold dark:text-gray-200"
+                  htmlFor="username">
+                  Name
+                </label>
+                <input
+                  id="username"
+                  name="name"
+                  type="text"
+                  required
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                />
+              </div>
+              <div>
+                <label
+                  className="text-gray-900 font-bold dark:text-gray-200"
+                  htmlFor="userphoto">
+                  Photo URL
+                </label>
+                <input
+                  id="userphoto"
+                  name="photo"
+                  type="text"
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                />
+              </div>
               <div>
                 <label
                   className="text-gray-900 font-bold dark:text-gray-200"
@@ -62,6 +64,7 @@ const Login = () => {
                   id="emailAddress"
                   name="email"
                   type="email"
+                  required
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 />
               </div>
@@ -76,6 +79,7 @@ const Login = () => {
                   id="password"
                   name="password"
                   type="password"
+                  required
                   className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 />
               </div>
@@ -91,19 +95,16 @@ const Login = () => {
                   <FaArrowRight className="text-red-600" />
                 </span>
                 <span className="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white">
-                  Login
+                  Register
                 </span>
               </button>
             </div>
           </form>
 
           <div className="flex items-center justify-center gap-2 py-3 text-sm font-medium">
-            <p className="text-n300">Don't have an account?</p>
-            <Link
-              to="/register"
-              className="text-b300 underline"
-              href="/sign-in">
-              Register here
+            <p className="text-n300">Already have an account?</p>
+            <Link to="/login" className="text-b300 underline" href="/sign-in">
+              Login here
             </Link>
           </div>
         </section>
@@ -112,4 +113,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
