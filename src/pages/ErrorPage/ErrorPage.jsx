@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useEffect, useRef } from "react";
-import errorAnimation from "./errorLottie.json";
+import errorAnimation from "./error.json";
 import Lottie from "lottie-react";
 import { IoIosHeart } from "react-icons/io";
 

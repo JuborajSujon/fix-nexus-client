@@ -158,7 +158,7 @@ const Navbar = () => {
   return (
     <div
       onMouseLeave={handleMouseLeave}
-      className="navbar max-w-[1540px] fixed  z-10 bg-white dark:bg-slate-900 dark:text-slate-300 px-4">
+      className="navbar bg-white dark:bg-slate-900 dark:text-slate-300 px-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -231,11 +231,14 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          <div className="flex gap-1 sm:gap-2">
-            <Link to="/login">
-              <button className="px-2 rounded-md border border-orange-400 hover:bg-orange-400 hover:text-slate-900 text-base  font-semibold min-h-8 h-8 sm:min-h-10 sm:h-10">
+          <div className="flex">
+            <Link
+              to="/login"
+              className="rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-indigo-600 text-indigo-600 dark:border-white dark:text-white">
+              <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-indigo-600 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+              <span className="relative text-indigo-600 dark:text-orange-600 transition duration-300 group-hover:text-white ease">
                 Login
-              </button>
+              </span>
             </Link>
           </div>
         )}
