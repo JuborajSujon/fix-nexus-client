@@ -187,9 +187,9 @@ const Navbar = () => {
         </div>
         <Link
           to={"/"}
-          className="btn btn-ghost hover:bg-stone-900 text-xl sm:text-2xl md:text-3xl lg:text-4xl italic font-bold  min-h-10 h-12 -ml-2 ">
+          className="btn btn-ghost hover:bg-slate-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl italic font-bold  min-h-12 h-12 -ml-2 ">
           <img
-            className="w-40"
+            className="w-36"
             src="https://i.ibb.co/j5Sqs26/logo.png"
             alt="logo"
           />
@@ -209,6 +209,13 @@ const Navbar = () => {
         {user ? (
           <div className="relative">
             <div className="flex items-center  gap-1 sm:gap-2">
+              <div>
+                <button
+                  onClick={handleLogout}
+                  className="px-2 rounded-md border border-orange-400 hover:bg-orange-400 hover:text-slate-900 text-base  font-semibold min-h-8 h-8 sm:min-h-10 sm:h-10">
+                  Logout
+                </button>
+              </div>
               <label
                 tabIndex={0}
                 className="btn btn-ghost btn-circle avatar hover:bg-orange-500 min-h-8 h-10 w-10  sm:min-h-12 sm:h-12 sm:w-12">
@@ -222,25 +229,12 @@ const Navbar = () => {
                 </div>
               </label>
             </div>
-            <div>
-              <button
-                onClick={handleLogout}
-                className="px-2 rounded-md border border-orange-400 hover:bg-orange-400 hover:text-slate-900 text-base  font-semibold min-h-8 h-8 sm:min-h-10 sm:h-10">
-                Logout
-              </button>
-            </div>
           </div>
         ) : (
           <div className="flex gap-1 sm:gap-2">
             <Link to="/login">
               <button className="px-2 rounded-md border border-orange-400 hover:bg-orange-400 hover:text-slate-900 text-base  font-semibold min-h-8 h-8 sm:min-h-10 sm:h-10">
                 Login
-              </button>
-            </Link>
-
-            <Link to="/register">
-              <button className="px-2 rounded-md border border-orange-400 hover:bg-orange-400 hover:text-slate-900 text-base font-semibold min-h-8 h-8 sm:min-h-10 sm:h-10">
-                Register
               </button>
             </Link>
           </div>
