@@ -20,11 +20,24 @@ const Register = () => {
     try {
       // create user from firebase
       const result = await createUser(email, password);
-      await updateUserProfile({ displayName: name, photoURL: photo });
+      await updateUserProfile(name, photo);
 
       // Optimistic UI - update state
       setUser({ ...result?.user, displayName: name, photoURL: photo });
       toast.success("User Created Successfully", { autoClose: 1500 });
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message, { autoClose: 1500 });
+    }
+  };
+
+  // handle google login
+  const handleGoogleLogin = async () => {
+    try {
+      // google sign in from firebase
+      await googleLogin();
+      toast.success("Login Successful", { autoClose: 1500 });
       navigate(from, { replace: true });
     } catch (error) {
       console.log(error);
@@ -43,7 +56,7 @@ const Register = () => {
             <p className="text-gray-500 dark:text-gray-300 mt-4">
               Enter your credentials to access FixNexus.
             </p>
-            <div>
+            <div onClick={handleGoogleLogin}>
               <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-md border border-n30 bg-white py-3">
                 <FaGoogle className="text-green-500" />
                 <span className="text-base font-bold dark:text-slate-900 ">
@@ -55,7 +68,7 @@ const Register = () => {
 
           <div className="divider">or</div>
 
-          <form>
+          <form onSubmit={handleRegister}>
             <div className="grid grid-cols-1 gap-3 mt-4 ">
               <div>
                 <label
