@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useEffect, useRef } from "react";
 import errorAnimation from "./errorLottie.json";
 import Lottie from "lottie-react";
+import { IoIosHeart } from "react-icons/io";
 
 const ErrorPage = () => {
   const navigate = useNavigate();
@@ -78,8 +79,9 @@ const ErrorPage = () => {
               </div>
               <div className="text-center">
                 <p className="mb-0 text-slate-400">
-                  {new Date().getFullYear()}@ FixNexus. Design with
-                  <i className="mdi mdi-heart text-red-600"></i> by{" "}
+                  {new Date().getFullYear()}@ FixNexus. Design with{" "}
+                  <IoIosHeart className="inline-block text-red-500" size={20} />{" "}
+                  by{" "}
                   <Link
                     to={"https://github.com/JuborajSujon"}
                     target="_blank"
