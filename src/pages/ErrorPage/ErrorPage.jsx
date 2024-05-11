@@ -68,7 +68,7 @@ const ErrorPage = () => {
                   alt=""
                 /> */}
                 <h1 className="mt-3 mb-6 md:text-4xl text-3xl font-bold ">
-                  Page Not Found?
+                  {error?.data}
                 </h1>
                 <p className="my-10 text-red-500 text-xl">
                   {" "}
