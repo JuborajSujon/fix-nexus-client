@@ -2,16 +2,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useEffect, useRef } from "react";
 import errorAnimation from "./error.json";
+import errorAnimation2 from "./errorLottie.json";
 import Lottie from "lottie-react";
 import { IoIosHeart } from "react-icons/io";
+import { useRouteError } from "react-router-dom";
 
 const ErrorPage = () => {
+  const error = useRouteError();
   const navigate = useNavigate();
   const erAnimation = useRef(null);
 
   const style = {
     width: "100%",
-    height: "auto",
+    height: "300px",
     margin: "0 auto",
     maxWidth: "500px",
   };
@@ -25,7 +28,7 @@ const ErrorPage = () => {
         <title>FixNexus | Page Not Found</title>
       </Helmet>
       <section className="relative bg-yellow-400/5">
-        <div className="container-fluid relative">
+        <div className="">
           <div className="grid grid-cols-1">
             <div className="flex flex-col min-h-screen justify-center md:px-10 py-10 px-4">
               <div className="text-center">
@@ -39,14 +42,25 @@ const ErrorPage = () => {
               </div>
               <div className=" text-center my-auto ">
                 <div className="mx-auto ">
-                  <Lottie
-                    animationData={errorAnimation}
-                    style={style}
-                    lottieRef={erAnimation}
-                    onLoopComplete={() => {
-                      erAnimation.current.setDirection(1);
-                    }}
-                  />
+                  {error.status === 404 ? (
+                    <Lottie
+                      animationData={errorAnimation}
+                      style={style}
+                      lottieRef={erAnimation}
+                      onLoopComplete={() => {
+                        erAnimation.current.setDirection(1);
+                      }}
+                    />
+                  ) : (
+                    <Lottie
+                      animationData={errorAnimation2}
+                      style={style}
+                      lottieRef={erAnimation}
+                      onLoopComplete={() => {
+                        erAnimation.current.setDirection(1);
+                      }}
+                    />
+                  )}
                 </div>
                 {/* <img
                   src="https://i.ibb.co/SxMVZWM/error.png"
@@ -56,6 +70,13 @@ const ErrorPage = () => {
                 <h1 className="mt-3 mb-6 md:text-4xl text-3xl font-bold ">
                   Page Not Found?
                 </h1>
+                <p className="my-10 text-red-500 text-xl">
+                  {" "}
+                  Error {error.status}:
+                  <i className="text-red-500 text-xl ml-3">
+                    {error.statusText || error.message}
+                  </i>
+                </p>
                 <p className="text-slate-400">
                   Whoops, this is embarassing. <br />
                   Looks like the page you were looking for was not found.
