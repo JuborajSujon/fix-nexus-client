@@ -26,16 +26,18 @@ const Footer = () => {
           <Link
             to="https://www.facebook.com/juboraj.sujon/"
             className="mx-1 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 border-2 p-2 border-transparent hover:border-orange-400"
+            target="_blank"
             aria-label="Reddit">
             <FaFacebookF size={20} />
           </Link>
 
-          <a
+          <Link
             to="https://www.linkedin.com/in/sujonmiah/"
             className="mx-1 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 border-2 p-2 border-transparent hover:border-orange-400"
+            target="_blank"
             aria-label="Facebook">
             <FaLinkedin size={20} />
-          </a>
+          </Link>
         </div>
       </div>
 
