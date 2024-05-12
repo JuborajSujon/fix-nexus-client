@@ -18,6 +18,28 @@ const ServicesDetails = () => {
                   className="w-4/5 rounded object-cover mx-auto"
                 />
               </div>
+              <div>
+                <p className="text-lg text-left font-semibold mt-4 mb-3">
+                  Service Provider Information
+                </p>
+                <div className="flex items-center gap-x-2">
+                  <img
+                    className="object-cover w-28 h-28 rounded-lg"
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=faceare&facepad=3&w=688&h=688&q=100"
+                    alt=""
+                  />
+
+                  <div className="text-left">
+                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+                      Mia John
+                    </h1>
+
+                    <p className="text-base text-gray-500 dark:text-gray-400">
+                      Service location
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="lg:col-span-2">
@@ -80,26 +102,6 @@ const ServicesDetails = () => {
               </div>
 
               <div className="mt-8">
-                <p className="text-lg font-semibold mt-4 mb-3">
-                  Service Provider Information
-                </p>
-                <div className="flex items-center gap-x-2">
-                  <img
-                    className="object-cover w-16 h-16 rounded-lg"
-                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=faceare&facepad=3&w=688&h=688&q=100"
-                    alt=""
-                  />
-
-                  <div>
-                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                      Mia John
-                    </h1>
-
-                    <p className="text-base text-gray-500 dark:text-gray-400">
-                      Service location
-                    </p>
-                  </div>
-                </div>
                 <h3 className="text-lg font-semibold mt-4">
                   Service Description
                 </h3>
@@ -121,6 +123,22 @@ const ServicesDetails = () => {
                     flavorings to suit your taste preferences.
                   </li>
                 </ul>
+
+                <div className="mt-8">
+                  <div className="flex items-center justify-end gap-x-2">
+                    <img
+                      className="object-cover w-12 h-12 rounded-full"
+                      src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=faceare&facepad=3&w=688&h=688&q=100"
+                      alt=""
+                    />
+
+                    <div>
+                      <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+                        Mia John
+                      </h1>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="mt-8">
@@ -262,7 +280,7 @@ const ServicesDetails = () => {
                     </div>
                     <p className="text-xs mt-4">
                       The service was amazing. I never had to wait that long for
-                      my food. The staff was friendly and attentive, and the
+                      my phone. The staff was friendly and attentive, and the
                       delivery was impressively prompt.
                     </p>
                   </div>
@@ -270,7 +288,7 @@ const ServicesDetails = () => {
 
                 <button
                   type="button"
-                  className="w-full mt-8 px-4 py-2.5 bg-transparent border border-yellow-300 text-yellow-300 font-semibold rounded">
+                  className="w-full mt-8 px-4 py-2.5 bg-transparent border border-yellow-300 dark:text-yellow-300 font-semibold rounded">
                   Read all reviews
                 </button>
               </div>
