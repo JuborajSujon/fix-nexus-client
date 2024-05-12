@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import PrivateRoute from "./PrivateRoute";
 import AddServices from "../pages/AddServices";
 import ServicesDetails from "../pages/ServicesDetails";
+import PurchaseConfirm from "../pages/PurchaseConfirm";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ServicesDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/purchase",
+        element: (
+          <PrivateRoute>
+            <PurchaseConfirm />
           </PrivateRoute>
         ),
       },

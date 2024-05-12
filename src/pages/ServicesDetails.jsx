@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ServicesDetails = () => {
   return (
     <div className="">
@@ -60,9 +62,11 @@ const ServicesDetails = () => {
               </div>
 
               <div className="flex flex-wrap gap-4 mt-8">
-                <button className="min-w-[200px] px-4 py-3 bg-orange-300 hover:bg-orange-400 text-black text-sm font-semibold rounded">
+                <Link
+                  to="/purchase"
+                  className="min-w-[200px] px-4 py-3 bg-orange-300 hover:bg-orange-400 text-black text-center text-sm font-semibold rounded">
                   Book Now
-                </button>
+                </Link>
 
                 <button
                   type="button"
