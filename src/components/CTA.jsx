@@ -1,7 +1,7 @@
 const CTA = () => {
   return (
     <div>
-      <section className="bg-[url(https://png.pngtree.com/thumb_back/fh260/background/20210205/pngtree-holiday-coupon-promotion-background-material-image_543763.jpg)] bg-cover bg-no-repeat bg-center">
+      <section className="bg-[url(https://i.ibb.co/9w3ML5B/cta.jpg)] bg-cover bg-no-repeat bg-center">
         <div className="w-full px-4 py-28 mt-20 lg:px-10 ">
           <h2 className="text-3xl md:text-5xl leading-10 mb-8 font-bold tracking-tight bg-gradient-to-r from-blue-600 to-slate-800 bg-clip-text text-transparent dark:bg-gradient-to-r dark:from-blue-600 dark:via-indigo-500 dark:to-orange-400 ">
             Get 25% off on your next service purchase
