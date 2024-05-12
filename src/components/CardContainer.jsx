@@ -4,7 +4,7 @@ import ServiceCard from "./ServiceCard";
 
 const CardContainer = () => {
   return (
-    <div className="py-10 md:py-20">
+    <div className="py-10 md:py-20 px-4">
       <SectionTitle
         title="Popular Services"
         desctiption="Browse our popular services below and schedule an appointment with us today to get your gadgets working like new again."
