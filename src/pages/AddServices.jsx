@@ -1,21 +1,62 @@
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
+import useAuth from "./../hooks/useAuth";
+import useAxiosGeneral from "./../hooks/useAxiosGeneral";
+import { toast } from "react-toastify";
 
 const AddServices = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const axiosGeneral = useAxiosGeneral();
+
+  const handleAddService = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const serviceName = form.serviceName.value;
+    const imgURL = form.imgURL.value;
+    const price = form.price.value;
+    const serviceArea = form.serviceArea.value;
+    const description = form.description.value;
+    const providerEmail = user?.email;
+    const providerImage = user?.photoURL;
+    const providerName = user?.displayName;
+    const service = {
+      serviceName,
+      imgURL,
+      price,
+      serviceArea,
+      description,
+      providerEmail,
+      providerImage,
+      providerName,
+    };
+    try {
+      const { data } = await axiosGeneral.post("/services", service);
+      if (data.insertedId) {
+        toast.success("Service Added Successfully", { autoClose: 1500 });
+        navigate("/manage-service");
+        form.reset();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="min-h-[calc(100vh-170px)] flex items-center justify-center py-24 md:pt-28 md:pb-20 dark:bg-gray-900 px-4">
       <Helmet>
         <title>FixNexus | Add New Service</title>
       </Helmet>
       <section className="max-w-4xl  w-full p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-        <h2 className="text-3xl font-semibold text-gray-700 capitalize dark:text-white">
+        <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 capitalize dark:text-white">
           Add New Service
         </h2>
 
-        <form>
-          <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+        <form onSubmit={handleAddService}>
+          <div className="grid grid-cols-1 gap-3 md:gap-6 mt-4 sm:grid-cols-2">
             <div>
               <label
-                className="text-gray-700 font-bold text-lg dark:text-gray-200"
+                className="text-gray-700 font-bold text-base md:text-lg dark:text-gray-200"
                 htmlFor="serviceName">
                 Service Name
               </label>
@@ -30,7 +71,7 @@ const AddServices = () => {
 
             <div>
               <label
-                className="text-gray-700 font-bold text-lg dark:text-gray-200"
+                className="text-gray-700 font-bold text-base md:text-lg dark:text-gray-200"
                 htmlFor="imgURL">
                 Image URL of the service
               </label>
@@ -45,7 +86,7 @@ const AddServices = () => {
 
             <div>
               <label
-                className="text-gray-700 font-bold text-lg dark:text-gray-200"
+                className="text-gray-700 font-bold text-base md:text-lg dark:text-gray-200"
                 htmlFor="price">
                 Price
               </label>
@@ -58,7 +99,7 @@ const AddServices = () => {
             </div>
             <div>
               <label
-                className="text-gray-700 font-bold text-lg dark:text-gray-200"
+                className="text-gray-700 font-bold text-base md:text-lg dark:text-gray-200"
                 htmlFor="serviceArea">
                 Service Area
               </label>
@@ -72,7 +113,7 @@ const AddServices = () => {
           </div>
           <div className="mt-4">
             <label
-              className="text-gray-700 font-bold text-lg dark:text-gray-200"
+              className="text-gray-700 font-bold text-base md:text-lg dark:text-gray-200"
               htmlFor="description">
               Description
             </label>
