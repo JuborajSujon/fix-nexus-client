@@ -3,7 +3,7 @@ import Carousel from "../components/Carousel";
 
 const Home = () => {
   return (
-    <div>
+    <div className="py-10 md:py-20">
       <Carousel />
       <CardContainer />
     </div>

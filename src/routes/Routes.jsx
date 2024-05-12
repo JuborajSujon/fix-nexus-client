@@ -49,6 +49,10 @@ const router = createBrowserRouter([
         path: "/service-to-do",
         element: <div>Service To Do</div>,
       },
+      {
+        path: "/services-details",
+        element: <div>Services Details</div>,
+      },
     ],
   },
 ]);

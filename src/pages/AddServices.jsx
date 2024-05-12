@@ -1,7 +1,7 @@
 const AddServices = () => {
   return (
-    <div className="min-h-[calc(100vh-170px)] flex items-center justify-center  dark:bg-gray-900">
-      <section className="max-w-4xl w-full p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+    <div className="min-h-[calc(100vh-170px)] flex items-center justify-center py-24 md:pt-28 md:pb-20 dark:bg-gray-900 px-4">
+      <section className="max-w-4xl  w-full p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
         <h2 className="text-3xl font-semibold text-gray-700 capitalize dark:text-white">
           Add New Service
         </h2>

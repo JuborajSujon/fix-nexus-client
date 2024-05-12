@@ -216,7 +216,7 @@ const Navbar = () => {
   return (
     <div
       onMouseLeave={handleMouseLeave}
-      className="navbar bg-white dark:bg-slate-900 dark:text-slate-300 px-4">
+      className="navbar bg-white max-w-[1540px] mx-auto fixed z-10 dark:bg-slate-900 dark:text-slate-300 px-8">
       <div className="navbar-start">
         <div className="dropdown">
           <div
