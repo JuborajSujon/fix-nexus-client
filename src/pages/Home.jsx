@@ -3,6 +3,7 @@ import CardContainer from "../components/CardContainer";
 import Carousel from "../components/Carousel";
 import BestPart from "../components/BestPart";
 import ClientReview from "../components/ClientReview";
+import CTA from "../components/CTA";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <CardContainer />
       <BestPart />
       <ClientReview />
+      <CTA />
     </div>
   );
 };

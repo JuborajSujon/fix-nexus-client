@@ -23,7 +23,7 @@ const ClientReview = () => {
           What our <span className="text-blue-500">customers</span> <br /> are
           saying
         </h1>
-        <p className="text-gray-500 mt-4">
+        <p className="text-gray-500 dark:text-slate-300 mt-4">
           These testimonials offer a glimpse into the real-world impact of our
           work, highlighting the quality of our services and the trust our
           clients place in us.
