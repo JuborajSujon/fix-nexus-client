@@ -2,6 +2,7 @@ import { FaArrowRight, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -47,6 +48,9 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-170px)]">
+      <Helmet>
+        <title>FixNexus | Register</title>
+      </Helmet>
       <div className="">
         <section className="max-w-4xl w-full p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
           <div>
