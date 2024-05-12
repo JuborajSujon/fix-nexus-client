@@ -50,7 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/booked-services",
-        element: <div>Booked Services</div>,
+        element: (
+          <PrivateRoute>
+            <div>Booked Services</div>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/service-to-do",
