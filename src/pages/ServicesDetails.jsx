@@ -76,6 +76,9 @@ const ServicesDetails = () => {
               </div>
 
               <div className="mt-8">
+                <p className="text-lg font-semibold mt-4 mb-3">
+                  Service Provider Information
+                </p>
                 <div className="flex items-center gap-x-2">
                   <img
                     className="object-cover w-16 h-16 rounded-lg"
