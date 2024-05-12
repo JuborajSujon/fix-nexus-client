@@ -1,11 +1,15 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from "react-helmet-async";
 
 const PurchaseConfirm = () => {
   const [startDate, setStartDate] = useState(new Date());
   return (
     <div className="min-h-[calc(100vh-170px)] flex items-center justify-center py-24 md:pt-28 md:pb-20 dark:bg-gray-900 px-4">
+      <Helmet>
+        <title>FixNexus | Purchase Confirmation</title>
+      </Helmet>
       <section className="max-w-7xl  w-full p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
         <h2 className="text-3xl font-semibold text-gray-700 capitalize dark:text-white mb-6">
           Purchase Confirmation

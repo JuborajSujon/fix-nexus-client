@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const ServicesDetails = () => {
   return (
     <div className="">
+      <Helmet>
+        <title>FixNexus | Service Details</title>
+      </Helmet>
       <div className="py-20 md:pt-28 md:pb-20">
         <div className="p-6 lg:max-w-7xl max-w-2xl max-lg:mx-auto">
           <div className="grid items-start grid-cols-1 lg:grid-cols-5 gap-12">
