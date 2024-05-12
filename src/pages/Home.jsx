@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import CardContainer from "../components/CardContainer";
 import Carousel from "../components/Carousel";
-import TopSeller from "../components/TopSeller";
 import BestPart from "../components/BestPart";
+import ClientReview from "../components/ClientReview";
 
 const Home = () => {
   return (
@@ -12,8 +12,8 @@ const Home = () => {
       </Helmet>
       <Carousel />
       <CardContainer />
-      <TopSeller />
       <BestPart />
+      <ClientReview />
     </div>
   );
 };
