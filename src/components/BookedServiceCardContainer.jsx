@@ -1,13 +1,15 @@
-import ManageServiceCard from "./ManageServiceCard";
+import BookedServiceCard from "./BookedServiceCard";
 
 const BookedServiceCardContainer = () => {
   return (
-    <div className="grid grid-cols-1 gap-4">
-      <ManageServiceCard />
-      <ManageServiceCard />
-      <ManageServiceCard />
-      <ManageServiceCard />
-      <ManageServiceCard />
+    <div className="grid grid-cols-1 gap-4 px-4">
+      <BookedServiceCard />
+      <BookedServiceCard />
+      <BookedServiceCard />
+      <BookedServiceCard />
+      <BookedServiceCard />
+      <BookedServiceCard />
+      <BookedServiceCard />
     </div>
   );
 };
