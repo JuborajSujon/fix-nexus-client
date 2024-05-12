@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 
 const ClientReview = () => {
   return (
-    <div className="relative lg:mt-24 mt-16 px-4">
+    <div className="relative lg:mt-24 mt-16 px-4 py-10">
       <div className="flex flex-row absolute inset-0 -z-20">
         <div className="min-h-[50vh] bg-white dark:bg-gray-900 md:w-3/4"></div>
         <div className="min-h-[50vh] bg-blue-400 md:w-2/5"></div>
