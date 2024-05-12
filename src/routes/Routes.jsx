@@ -10,6 +10,7 @@ import ServicesDetails from "../pages/ServicesDetails";
 import PurchaseConfirm from "../pages/PurchaseConfirm";
 import ManageServices from "../pages/ManageServices";
 import BookedService from "../pages/BookedService";
+import AllServices from "../pages/AllServices";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/services",
-        element: <div>Services</div>,
+        element: <AllServices />,
       },
       {
         path: "/add-service",
