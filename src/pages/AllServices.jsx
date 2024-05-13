@@ -48,8 +48,8 @@ const AllServices = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-
     setSearch(searchText);
+    setCurrentPage(1);
   };
 
   return (
