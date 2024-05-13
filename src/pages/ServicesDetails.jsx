@@ -1,7 +1,20 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const ServicesDetails = () => {
+  const loadedData = useLoaderData();
+  const {
+    _id,
+    serviceName,
+    imgURL,
+    price,
+    description,
+    serviceArea,
+    providerName,
+    providerEmail,
+    providerImage,
+  } = loadedData;
+
   return (
     <div className="">
       <Helmet>
@@ -13,7 +26,7 @@ const ServicesDetails = () => {
             <div className="lg:col-span-3 w-full lg:sticky top-0 text-center">
               <div className="bg-gray-800 px-4 py-10 rounded-xl">
                 <img
-                  src="https://i.ibb.co/SRq3S0Y/Slider2.jpg"
+                  src={imgURL}
                   alt="Product"
                   className="w-4/5 rounded object-cover mx-auto"
                 />
@@ -25,17 +38,17 @@ const ServicesDetails = () => {
                 <div className="flex items-center gap-x-2">
                   <img
                     className="object-cover w-28 h-28 rounded-lg"
-                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=faceare&facepad=3&w=688&h=688&q=100"
-                    alt=""
+                    src={providerImage}
+                    alt={providerName}
                   />
 
                   <div className="text-left">
                     <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                      Mia John
+                      {providerName}
                     </h1>
 
                     <p className="text-base text-gray-500 dark:text-gray-400">
-                      Service location
+                      Service location : {serviceArea}
                     </p>
                   </div>
                 </div>
@@ -43,10 +56,8 @@ const ServicesDetails = () => {
             </div>
 
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-semibold">
-                Espresso Elegante | Coffee
-              </h2>
-              <p className=" text-4xl font-semibold mt-4">Price: $12</p>
+              <h2 className="text-3xl font-semibold">{serviceName}</h2>
+              <p className=" text-4xl font-semibold mt-4">Price: ${price}</p>
 
               <div className="flex space-x-2 mt-4">
                 <svg
@@ -89,7 +100,7 @@ const ServicesDetails = () => {
 
               <div className="flex flex-wrap gap-4 mt-8">
                 <Link
-                  to="/purchase"
+                  to={`/purchase/${_id}`}
                   className="min-w-[200px] px-4 py-3 bg-orange-300 hover:bg-orange-400 text-black text-center text-sm font-semibold rounded">
                   Book Now
                 </Link>
@@ -105,36 +116,20 @@ const ServicesDetails = () => {
                 <h3 className="text-lg font-semibold mt-4">
                   Service Description
                 </h3>
-                <ul className="space-y-3 list-disc mt-4 pl-4 text-sm">
-                  <li>
-                    A cup of coffee is a beverage essential because of its
-                    timeless appeal
-                  </li>
-                  <li>
-                    Easy to prepare. It can be brewed using various methods,
-                    from drip machines to manual pour-overs.
-                  </li>
-                  <li>
-                    Available in various sizes, from a standard espresso shot to
-                    a large Americano, catering to different preferences.
-                  </li>
-                  <li>
-                    You can customize your coffee by adding cream, sugar, or
-                    flavorings to suit your taste preferences.
-                  </li>
-                </ul>
+
+                <p className="mt-4">{description}</p>
 
                 <div className="mt-8">
                   <div className="flex items-center justify-end gap-x-2">
                     <img
                       className="object-cover w-12 h-12 rounded-full"
-                      src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=faceare&facepad=3&w=688&h=688&q=100"
-                      alt=""
+                      src={providerImage}
+                      alt={providerName}
                     />
 
                     <div>
                       <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                        Mia John
+                        {providerName}
                       </h1>
                     </div>
                   </div>

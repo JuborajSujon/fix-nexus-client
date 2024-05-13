@@ -68,12 +68,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/services-details",
+        path: "/services-details/:id",
         element: (
           <PrivateRoute>
             <ServicesDetails />
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/services/${params.id}`),
       },
       {
         path: "/purchase",
