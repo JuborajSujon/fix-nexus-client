@@ -235,7 +235,7 @@ const Navbar = () => {
           to={"/"}
           className="btn btn-ghost hover:bg-slate-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl italic font-bold  min-h-12 h-12 -ml-2 ">
           <img
-            className="w-36"
+            className="w-28 sm:w-36"
             src="https://i.ibb.co/j5Sqs26/logo.png"
             alt="logo"
           />
@@ -246,7 +246,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end  space-x-2">
         {/*Theme toggle Controller*/}
-        <div className="hidden sm:block">
+        <div className="">
           <ThemeController />
         </div>
 

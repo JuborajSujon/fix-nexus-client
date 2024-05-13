@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PropsTypes from "prop-types";
 
-const Slide = ({ image, text }) => {
+const Slide = ({ image, text, desc }) => {
   return (
     <div
       className="w-full bg-center rounded-md bg-cover h-[38rem]"
@@ -9,11 +9,12 @@ const Slide = ({ image, text }) => {
         backgroundImage: `url(${image})`,
       }}>
       <div className=" w-full h-full bg-gray-900/70">
-        <div className="w-full h-full flex flex-col gap-10 justify-center ml-20">
+        <div className="w-full h-full flex flex-col gap-10 justify-center md:ml-20 px-6">
           <div className="max-w-3xl">
             <h1 className="text-3xl font-semibold text-white lg:text-5xl">
               {text}
             </h1>
+            <p className="text-white mt-4">{desc}</p>
           </div>
           <div>
             <Link

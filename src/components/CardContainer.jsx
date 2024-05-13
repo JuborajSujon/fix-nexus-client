@@ -3,15 +3,18 @@ import SectionTitle from "./SectionTitle";
 import ServiceCard from "./ServiceCard";
 import { useEffect, useState } from "react";
 import useAxiosGeneral from "./../hooks/useAxiosGeneral";
+import { ColorRing } from "react-loader-spinner";
 
 const CardContainer = () => {
   const axiosGeneral = useAxiosGeneral();
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
       const { data } = await axiosGeneral("/home-services");
       setServices(data);
+      setLoading(false);
     };
 
     getData();
@@ -23,6 +26,19 @@ const CardContainer = () => {
         title="Popular Services"
         desctiption="Browse our popular services below and schedule an appointment with us today to get your gadgets working like new again."
       />
+      {loading && (
+        <div className="flex justify-center items-center py-32">
+          <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="color-ring-loading"
+            wrapperStyle={{}}
+            wrapperClass="color-ring-wrapper"
+            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+          />
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {services?.map((service) => (
           <ServiceCard key={service._id} service={service} />

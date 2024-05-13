@@ -31,18 +31,21 @@ const Carousel = () => {
           <Slide
             image={bgimg1}
             text="Revive Your Devices with Our Expert Repairs"
+            desc="Trust our skilled technicians to breathe new life into your electronics. From smartphones to laptops, we specialize in repairing a wide range of devices with precision and expertise. "
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={bgimg2}
             text="Experience Seamless Repairs for Your Electronics"
+            desc="Experience seamless repairs and reliable solutions for all your electronic devices. Whether it's a cracked screen, faulty battery, or software issue, our team is here to diagnose. "
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
             image={bgimg3}
             text="Empowering Your Devices to Perform Like New"
+            desc="Get back to doing what you love with our efficient electronic repair services. With quick turnaround times and transparent pricing, we make it easy to get your devices fixed without hassle."
           />
         </SwiperSlide>
       </Swiper>
