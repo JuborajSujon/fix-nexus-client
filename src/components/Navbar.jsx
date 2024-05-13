@@ -60,11 +60,11 @@ const Navbar = () => {
       </li>
       {user && (
         <li className="relative">
-          <Link
+          <span
             onMouseOver={handleMouseEnter}
             className="text-slate-900 px-2 py-1.5 rounded-md dark:text-orange-400  hover:bg-orange-400 dar hover:dark:text-slate-900">
             Dashboard
-          </Link>
+          </span>
           {isHovered && (
             <ul
               tabIndex={0}
