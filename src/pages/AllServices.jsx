@@ -1,8 +1,57 @@
 import { Helmet } from "react-helmet-async";
 import SectionTitle from "../components/SectionTitle";
-import ServiceCard from "../components/ServiceCard";
+import { useEffect, useState } from "react";
+import AllServiceCard from "../components/AllServiceCard";
+import useAxiosGeneral from "../hooks/useAxiosGeneral";
 
 const AllServices = () => {
+  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [count, setCount] = useState(0);
+  const [search, setSearch] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [services, setServices] = useState([]);
+
+  const axiosGeneral = useAxiosGeneral();
+  // ensure that the new page starts at the top when navigating
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axiosGeneral(
+        `/services?page=${currentPage}&size=${itemsPerPage}&search=${search}`
+      );
+
+      setServices(data);
+    };
+
+    getData();
+  }, [currentPage, itemsPerPage, search]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axiosGeneral(`/services-count?search=${search}`);
+      setCount(data.count);
+    };
+    getData();
+  }, [search]);
+
+  const numberOfPages = Math.ceil(count / itemsPerPage);
+  const pages = [...Array(numberOfPages).keys()].map((element) => element + 1);
+
+  //  handle pagination button
+  const handlePaginationButton = (value) => {
+    setCurrentPage(value);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    setSearch(searchText);
+  };
+
   return (
     <div className="py-20">
       <Helmet>
@@ -11,39 +60,45 @@ const AllServices = () => {
 
       <SectionTitle title="All Services" />
 
-      <div className="px-4 flex items-center justify-between pb-7">
-        <h3 className="text-2xl font-semibold mb-4">
-          Total Services Found: <span className="text-slate-600">10</span>
-        </h3>
-        <label className="input input-bordered flex items-center max-w-sm w-full gap-2">
-          <input type="text" className="grow" placeholder="Search" />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            className="w-6 h-6 opacity-70 cursor-pointer">
-            <path
-              fillRule="evenodd"
-              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-              clipRule="evenodd"
+      <div className="px-4 flex items-center justify-between pb-7 -mt-6">
+        <h3 className="text-2xl font-semibold mb-4"></h3>
+        <form onSubmit={handleSearch}>
+          <label className="input input-bordered flex items-center max-w-sm w-full gap-2">
+            <input
+              type="text"
+              onChange={(e) => setSearchText(e.target.value)}
+              value={searchText}
+              name="search"
+              className="grow"
+              placeholder="Search"
             />
-          </svg>
-        </label>
+            <button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                className="w-6 h-6 opacity-70 cursor-pointer">
+                <path
+                  fillRule="evenodd"
+                  d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </label>
+        </form>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
+        {services?.map((service) => (
+          <AllServiceCard key={service._id} service={service} />
+        ))}
       </div>
 
       <div className="flex sticky bottom-5 items-center justify-center mt-10">
-        <a
-          href="#"
+        <button
+          disabled={currentPage === 1}
+          onClick={() => handlePaginationButton(currentPage - 1)}
           className="px-4 py-2 mx-1 capitalize bg-orange-400 text-slate-900 font-semibold rounded-md cursor-not-allowed hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200">
           <div className="flex items-center -mx-1">
             <svg
@@ -62,16 +117,25 @@ const AllServices = () => {
 
             <span className="mx-1">previous</span>
           </div>
-        </a>
+        </button>
 
-        <a
-          href="#"
-          className="hidden px-4 py-2 mx-1 transition-colors duration-300 transform bg-orange-400 text-slate-900 font-semibold rounded-md sm:inline  hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200">
-          1
-        </a>
+        {/* Numbers */}
+        {pages.map((btnNum) => (
+          <button
+            onClick={() => handlePaginationButton(btnNum)}
+            key={btnNum}
+            className={`hidden ${
+              currentPage === btnNum
+                ? "bg-blue-500 text-white"
+                : "bg-orange-400"
+            } px-4 py-2 mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-blue-500  hover:text-white`}>
+            {btnNum}
+          </button>
+        ))}
 
-        <a
-          href="#"
+        <button
+          disabled={currentPage === numberOfPages}
+          onClick={() => handlePaginationButton(currentPage + 1)}
           className="px-4 py-2 mx-1 text-slate-900 font-semibold transition-colors duration-300 transform bg-orange-400 rounded-md  hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200 pr-7">
           <div className="flex items-center -mx-1">
             <span className="mx-1">Next</span>
@@ -90,7 +154,7 @@ const AllServices = () => {
               />
             </svg>
           </div>
-        </a>
+        </button>
       </div>
     </div>
   );
