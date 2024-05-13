@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
 import BookedServiceCard from "./BookedServiceCard";
 import useAuth from "../hooks/useAuth";
-import useAxiosGeneral from "../hooks/useAxiosGeneral";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const BookedServiceCardContainer = () => {
   const [bookedServices, setBookedServices] = useState([]);
   const { user } = useAuth();
-  const axiosGeneral = useAxiosGeneral();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axiosGeneral.get(
-        `/booked-services/${user?.email}`
-      );
+      const { data } = await axiosSecure.get(`/booked-services/${user?.email}`);
       setBookedServices(data);
     };
     getData();

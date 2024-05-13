@@ -4,15 +4,17 @@ import useAxiosGeneral from "../hooks/useAxiosGeneral";
 import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import useAxiosSecure from "./../hooks/useAxiosSecure";
 
 const ManageServicesCardContainer = () => {
   const [services, setServices] = useState([]);
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const axiosGeneral = useAxiosGeneral();
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axiosGeneral(`/manage-services/${user?.email}`);
+      const { data } = await axiosSecure(`/manage-services/${user?.email}`);
       setServices(data);
     };
     getData();
