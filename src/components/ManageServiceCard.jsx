@@ -1,50 +1,63 @@
-const ManageServiceCard = () => {
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+const ManageServiceCard = ({ service }) => {
+  const {
+    _id,
+    serviceName,
+    imgURL,
+    price,
+    serviceArea,
+    description,
+    providerEmail,
+    providerImage,
+    providerName,
+  } = service || {};
   return (
     <div>
       <div className="flex flex-col sm:flex-row max-w-5xl mx-auto overflow-hidden bg-white rounded-md shadow-lg dark:bg-gray-800">
         <div className="sm:w-1/3">
           <img
             className="object-cover w-full h-64"
-            src="https://i.ibb.co/sRtRZmV/Slider3.jpg"
-            alt=""
+            src={imgURL}
+            alt={serviceName}
           />
         </div>
 
         <div className="w-full flex flex-col justify-between sm:w-2/3 p-4">
           <div>
             <h1 className="text-xl font-bold text-gray-800 dark:text-white">
-              Service Name
+              {serviceName}
             </h1>
 
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              Service Area: Dhaka
+              Service Area: {serviceArea}
             </p>
             <h4 className="font-bold text-gray-700 dark:text-gray-200">
               Price :$220
             </h4>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit In odit
+              {description}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-between mt-3 item-center">
             <div className="flex">
-              <a
-                href="#_"
+              <Link
+                to={`/services-details/${_id}`}
                 className="rounded-md px-3.5 py-1 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-indigo-600 text-indigo-600">
                 <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-indigo-600 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
                 <span className="relative text-indigo-600 transition duration-300 group-hover:text-white ease">
                   View Details
                 </span>
-              </a>
-              <a
-                href="#_"
+              </Link>
+              <Link
+                to={`/update-service/${_id}`}
                 className="rounded-md px-3.5 py-1 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-indigo-600 text-indigo-600 ">
                 <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-indigo-600 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
                 <span className="relative text-indigo-600 transition duration-300 group-hover:text-white ease">
                   Edit
                 </span>
-              </a>
+              </Link>
             </div>
             <a
               href="#_"
@@ -61,6 +74,10 @@ const ManageServiceCard = () => {
       </div>
     </div>
   );
+};
+
+ManageServiceCard.propTypes = {
+  service: PropTypes.object,
 };
 
 export default ManageServiceCard;
