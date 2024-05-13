@@ -11,9 +11,8 @@ const ServicesDetails = () => {
     description,
     serviceArea,
     providerName,
-    providerEmail,
     providerImage,
-  } = loadedData;
+  } = loadedData || {};
 
   return (
     <div className="">

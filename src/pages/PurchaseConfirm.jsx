@@ -2,9 +2,52 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet-async";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import useAxiosGeneral from "../hooks/useAxiosGeneral";
+import { toast } from "react-toastify";
 
 const PurchaseConfirm = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const loadedData = useLoaderData();
+  const axiosGeneral = useAxiosGeneral();
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { _id, serviceName, imgURL, price, providerName, providerEmail } =
+    loadedData || {};
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const instructions = form.instructions.value;
+    const serviceDate = startDate;
+    const status = "Pending";
+
+    const service = {
+      serviceId: _id,
+      serviceName,
+      serviceImage: imgURL,
+      providerEmail,
+      providerName,
+      price,
+      userEmail: user?.email,
+      UserName: user?.displayName,
+      serviceDate,
+      status,
+      instructions,
+    };
+    try {
+      const { data } = await axiosGeneral.post("/booked-services", service);
+      if (data.insertedId) {
+        toast.success("Service Added Successfully", { autoClose: 1500 });
+        navigate("/booked-services");
+        form.reset();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="min-h-[calc(100vh-170px)] flex items-center justify-center py-24 md:pt-28 md:pb-20 dark:bg-gray-900 px-4">
       <Helmet>
@@ -17,13 +60,13 @@ const PurchaseConfirm = () => {
         <div className="grid grid-cols-1 gap-6 mt-4 md:grid-cols-2">
           <div className=" py-10 rounded-xl">
             <img
-              src="https://i.ibb.co/SRq3S0Y/Slider2.jpg"
-              alt="Product"
+              src={imgURL}
+              alt={serviceName}
               className="rounded object-cover mx-auto"
             />
           </div>
 
-          <form>
+          <form onSubmit={handleFormSubmit}>
             <div className="grid grid-cols-1 gap-3 mt-4 sm:grid-cols-2">
               <div>
                 <label
@@ -35,6 +78,7 @@ const PurchaseConfirm = () => {
                   id="serviceId"
                   type="text"
                   name="serviceId"
+                  value={_id}
                   disabled
                   className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 />
@@ -50,6 +94,7 @@ const PurchaseConfirm = () => {
                   id="imgserviceName"
                   type="text"
                   name="serviceName"
+                  value={serviceName}
                   disabled
                   className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 />
@@ -64,6 +109,7 @@ const PurchaseConfirm = () => {
                   id="serviceImage"
                   type="text"
                   name="serviceImage"
+                  value={imgURL}
                   disabled
                   className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 />
@@ -78,6 +124,7 @@ const PurchaseConfirm = () => {
                   id="price"
                   name="price"
                   type="text"
+                  value={price}
                   disabled
                   className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 />
@@ -92,6 +139,7 @@ const PurchaseConfirm = () => {
                   id="providerName"
                   type="text"
                   name="providerName"
+                  value={providerName}
                   disabled
                   className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 />
@@ -106,6 +154,7 @@ const PurchaseConfirm = () => {
                   id="providerEmail"
                   type="text"
                   name="providerEmail"
+                  value={providerEmail}
                   disabled
                   className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 />
@@ -120,6 +169,7 @@ const PurchaseConfirm = () => {
                   id="userName"
                   type="text"
                   name="userName"
+                  value={user?.displayName}
                   disabled
                   className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 />
@@ -134,6 +184,7 @@ const PurchaseConfirm = () => {
                   id="userEmail"
                   type="text"
                   name="userEmail"
+                  value={user?.email}
                   disabled
                   className="block w-full px-4 py-1.5 mt-1 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 />
@@ -155,7 +206,7 @@ const PurchaseConfirm = () => {
               <label
                 className="text-gray-700 font-bold text-sm dark:text-gray-200"
                 htmlFor="instructions">
-                Special instruction
+                Customized Service Plan
               </label>
               <textarea
                 id="instructions"
