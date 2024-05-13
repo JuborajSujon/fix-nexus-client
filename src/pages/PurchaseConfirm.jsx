@@ -13,8 +13,15 @@ const PurchaseConfirm = () => {
   const axiosGeneral = useAxiosGeneral();
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { _id, serviceName, imgURL, price, providerName, providerEmail } =
-    loadedData || {};
+  const {
+    _id,
+    serviceName,
+    imgURL,
+    price,
+    providerName,
+    providerEmail,
+    providerImage,
+  } = loadedData || {};
 
   // ensure that the new page starts at the top when navigating
   useEffect(() => {
@@ -34,6 +41,7 @@ const PurchaseConfirm = () => {
       serviceImage: imgURL,
       providerEmail,
       providerName,
+      providerImage,
       price,
       userEmail: user?.email,
       UserName: user?.displayName,
