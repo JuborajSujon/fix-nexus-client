@@ -1,17 +1,15 @@
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-const ManageServiceCard = ({ service }) => {
-  const {
-    _id,
-    serviceName,
-    imgURL,
-    price,
-    serviceArea,
-    description,
-    providerEmail,
-    providerImage,
-    providerName,
-  } = service || {};
+const ManageServiceCard = ({ service, handleDelete }) => {
+  const { _id, serviceName, imgURL, price, serviceArea, description } =
+    service || {};
+
+  // ensure that the new page starts at the top when navigating
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <div className="flex flex-col sm:flex-row max-w-5xl mx-auto overflow-hidden bg-white rounded-md shadow-lg dark:bg-gray-800">
@@ -33,7 +31,7 @@ const ManageServiceCard = ({ service }) => {
               Service Area: {serviceArea}
             </p>
             <h4 className="font-bold text-gray-700 dark:text-gray-200">
-              Price :$220
+              Price :${price}
             </h4>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               {description}
@@ -59,8 +57,8 @@ const ManageServiceCard = ({ service }) => {
                 </span>
               </Link>
             </div>
-            <a
-              href="#_"
+            <button
+              onClick={() => handleDelete(_id)}
               className="relative inline-flex items-center justify-start px-6 py-1.5 overflow-hidden font-medium transition-all bg-red-500 rounded-md group">
               <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-mr-4 ">
                 <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
@@ -68,7 +66,7 @@ const ManageServiceCard = ({ service }) => {
               <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">
                 Delete
               </span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -78,6 +76,7 @@ const ManageServiceCard = ({ service }) => {
 
 ManageServiceCard.propTypes = {
   service: PropTypes.object,
+  handleDelete: PropTypes.func,
 };
 
 export default ManageServiceCard;
