@@ -3,8 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Register = () => {
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state || "/";
@@ -25,8 +27,14 @@ const Register = () => {
 
       // Optimistic UI - update state
       setUser({ ...result?.user, displayName: name, photoURL: photo });
-      toast.success("User Created Successfully", { autoClose: 1500 });
-      navigate(from, { replace: true });
+
+      const { data } = await axiosSecure.post("/jwt", {
+        email: result?.user?.email,
+      });
+      if (data.success) {
+        toast.success("User Created Successfully", { autoClose: 1500 });
+        navigate(from, { replace: true });
+      }
     } catch (error) {
       console.log(error);
       toast.error(error.message, { autoClose: 1500 });
@@ -37,9 +45,16 @@ const Register = () => {
   const handleGoogleLogin = async () => {
     try {
       // google sign in from firebase
-      await googleLogin();
-      toast.success("Login Successful", { autoClose: 1500 });
-      navigate(from, { replace: true });
+      const result = await googleLogin();
+
+      const { data } = await axiosSecure.post("/jwt", {
+        email: result?.user?.email,
+      });
+
+      if (data.success) {
+        toast.success("Login Successful", { autoClose: 1500 });
+        navigate(from, { replace: true });
+      }
     } catch (error) {
       console.log(error);
       toast.error(error.message, { autoClose: 1500 });

@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useAxiosGeneral from "../hooks/useAxiosGeneral";
 const ServiceToDoCard = ({ bookedService }) => {
   const {
+    _id,
     serviceId,
     serviceImage,
     serviceName,
@@ -13,6 +16,17 @@ const ServiceToDoCard = ({ bookedService }) => {
     userImage,
     status,
   } = bookedService || {};
+  const [filter, setFilter] = useState(status);
+  const axiosGeneral = useAxiosGeneral();
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axiosGeneral.patch(`/booked-services/${_id}`, {
+        status: filter,
+      });
+    };
+    getData();
+  }, [filter]);
 
   return (
     <div>
@@ -89,11 +103,12 @@ const ServiceToDoCard = ({ bookedService }) => {
                   </label>
                   <select
                     name="status"
-                    defaultValue={status}
+                    defaultValue={filter}
+                    onChange={(e) => setFilter(e.target.value)}
                     className="select select-bordered w-full max-w-xs">
-                    <option value={"pending"}>Pending</option>
-                    <option value={"working"}>Working</option>
-                    <option value={"completed"}>Completed</option>
+                    <option value={"Pending"}>Pending</option>
+                    <option value={"Working"}>Working</option>
+                    <option value={"Completed"}>Completed</option>
                   </select>
                 </form>
               </div>

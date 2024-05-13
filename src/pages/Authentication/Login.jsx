@@ -4,11 +4,13 @@ import useAuth from "../../hooks/useAuth";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "./../../hooks/useAxiosSecure";
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { signInUser, googleLogin, user, loading } = useAuth();
+  const axiosSecure = useAxiosSecure();
   useEffect(() => {
     if (user) {
       navigate("/");
@@ -20,9 +22,15 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       // google sign in from firebase
-      await googleLogin();
-      toast.success("Login Successful", { autoClose: 1500 });
-      navigate(from, { replace: true });
+      const result = await googleLogin();
+      const { data } = await axiosSecure.post("/jwt", {
+        email: result?.user?.email,
+      });
+
+      if (data.success) {
+        toast.success("Login Successful", { autoClose: 1500 });
+        navigate(from, { replace: true });
+      }
     } catch (error) {
       console.log(error);
       toast.error(error.message, { autoClose: 1500 });
@@ -38,9 +46,16 @@ const Login = () => {
 
     try {
       // sign in from firebase
-      await signInUser(email, password);
-      toast.success("Login Successful", { autoClose: 1500 });
-      navigate(from, { replace: true });
+      const result = await signInUser(email, password);
+
+      const { data } = await axiosSecure.post("/jwt", {
+        email: result?.user?.email,
+      });
+
+      if (data.success) {
+        toast.success("Login Successful", { autoClose: 1500 });
+        navigate(from, { replace: true });
+      }
     } catch (error) {
       console.log(error);
       toast.error(error.message, { autoClose: 1500 });
