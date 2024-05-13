@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet-async";
@@ -15,6 +15,11 @@ const PurchaseConfirm = () => {
   const { user } = useAuth();
   const { _id, serviceName, imgURL, price, providerName, providerEmail } =
     loadedData || {};
+
+  // ensure that the new page starts at the top when navigating
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();

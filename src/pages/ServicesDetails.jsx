@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 
@@ -13,6 +14,11 @@ const ServicesDetails = () => {
     providerName,
     providerImage,
   } = loadedData || {};
+
+  // ensure that the new page starts at the top when navigating
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="">
