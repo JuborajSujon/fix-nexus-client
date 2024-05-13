@@ -1,29 +1,36 @@
 import { Link } from "react-router-dom";
+import PropsType from "prop-types";
 
-const ServiceCard = () => {
+const ServiceCard = ({ service }) => {
+  const {
+    _id,
+    serviceName,
+    imgURL,
+    price,
+    description,
+    providerName,
+    providerImage,
+  } = service;
   return (
     <div>
       <div className="overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 ">
         <div className="group">
           <img
             className="object-cover w-full h-64 group-hover:scale-110 transition-transform duration-300"
-            src="https://i.ibb.co/kMQ6NSw/Slider1.jpg"
+            src={imgURL}
             alt="Article"
           />
 
           <div className="p-6">
             <div>
               <h2 className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline">
-                I Built A Successful Blog In One Year
+                {serviceName}
               </h2>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Molestie parturient et sem ipsum volutpat vel. Natoque sem et
-                aliquam mauris egestas quam volutpat viverra. In pretium nec
-                senectus erat. Et malesuada lobortis.
+                {description.slice(0, 100)} ...
               </p>
               <h4 className="mt-2 text-xl font-bold text-gray-600 dark:text-gray-400">
-                Price: $50
+                Price: ${price}
               </h4>
             </div>
           </div>
@@ -34,8 +41,8 @@ const ServiceCard = () => {
             <div className="flex items-center">
               <img
                 className="object-cover w-12 h-12 rounded-full"
-                src="https://i.ibb.co/sRtRZmV/Slider3.jpg"
-                alt="Avatar"
+                src={providerImage}
+                alt={providerName}
               />
             </div>
             <div className="ml-3">
@@ -43,14 +50,14 @@ const ServiceCard = () => {
                 Post By
               </p>
               <p className="text-xl text-gray-600 dark:text-gray-400">
-                John Doe
+                {providerName}
               </p>
             </div>
           </div>
 
           <div className="flex">
             <Link
-              to="/services-details"
+              to={`/services-details/${_id}`}
               className="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-white rounded hover:bg-white group border">
               <span className="w-48 h-48 rounded rotate-[-40deg] bg-orange-600 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
               <span className="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white">
@@ -62,6 +69,10 @@ const ServiceCard = () => {
       </div>
     </div>
   );
+};
+
+ServiceCard.propTypes = {
+  service: PropsType.object,
 };
 
 export default ServiceCard;

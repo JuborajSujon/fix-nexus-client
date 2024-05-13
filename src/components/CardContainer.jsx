@@ -1,8 +1,22 @@
 import { Link } from "react-router-dom";
 import SectionTitle from "./SectionTitle";
 import ServiceCard from "./ServiceCard";
+import { useEffect, useState } from "react";
+import useAxiosGeneral from "./../hooks/useAxiosGeneral";
 
 const CardContainer = () => {
+  const axiosGeneral = useAxiosGeneral();
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axiosGeneral("/home-services");
+      setServices(data);
+    };
+
+    getData();
+  }, []);
+
   return (
     <div className="py-10 md:py-20 px-4">
       <SectionTitle
@@ -10,12 +24,9 @@ const CardContainer = () => {
         desctiption="Browse our popular services below and schedule an appointment with us today to get your gadgets working like new again."
       />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
-        <ServiceCard />
+        {services?.map((service) => (
+          <ServiceCard key={service._id} service={service} />
+        ))}
       </div>
 
       <div className="flex justify-center mt-14">
