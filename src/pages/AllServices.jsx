@@ -3,8 +3,10 @@ import SectionTitle from "../components/SectionTitle";
 import { useEffect, useState } from "react";
 import AllServiceCard from "../components/AllServiceCard";
 import useAxiosGeneral from "../hooks/useAxiosGeneral";
+import { ColorRing } from "react-loader-spinner";
 
 const AllServices = () => {
+  const [loading, setLoading] = useState(true);
   const [itemsPerPage, setItemsPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
   const [count, setCount] = useState(0);
@@ -25,6 +27,8 @@ const AllServices = () => {
       );
 
       setServices(data);
+
+      setLoading(false);
     };
 
     getData();
@@ -88,6 +92,20 @@ const AllServices = () => {
           </label>
         </form>
       </div>
+
+      {loading && (
+        <div className="flex justify-center items-center py-32">
+          <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="color-ring-loading"
+            wrapperStyle={{}}
+            wrapperClass="color-ring-wrapper"
+            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+          />
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
         {services?.map((service) => (
