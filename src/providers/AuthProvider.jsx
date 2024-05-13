@@ -11,6 +11,7 @@ import {
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
+import axios from "axios";
 
 // Social Auth Provider
 const googleProvider = new GoogleAuthProvider();
@@ -55,7 +56,12 @@ const AuthProvider = ({ children }) => {
   };
 
   // sign out
-  const userSignOut = () => {
+  const userSignOut = async () => {
+    setLoading(true);
+    const { data } = axios(`${import.meta.env.VITE_API_URL}/logout`, {
+      withCredentials: true,
+    });
+    console.log(data);
     return signOut(auth);
   };
 
