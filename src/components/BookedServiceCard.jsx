@@ -22,7 +22,7 @@ const BookedServiceCard = ({ bookedService }) => {
 
         <div className="flex flex-col md:flex-row dark:bg-gray-800 px-4 py-6 gap-4">
           <div className="w-full flex flex-col justify-between gap-4 sm:w-2/3">
-            <div>
+            <div className="space-y-3">
               <h1 className="text-xl font-bold text-gray-800 dark:text-white">
                 {serviceName}
               </h1>

@@ -1,4 +1,19 @@
-const ServiceToDoCard = () => {
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+const ServiceToDoCard = ({ bookedService }) => {
+  const {
+    serviceId,
+    serviceImage,
+    serviceName,
+    instructions,
+    price,
+    serviceDate,
+    userName,
+    userEmail,
+    userImage,
+    status,
+  } = bookedService || {};
+
   return (
     <div>
       <div>
@@ -6,26 +21,38 @@ const ServiceToDoCard = () => {
           <div className="sm:w-1/3">
             <img
               className="object-cover w-full h-64"
-              src="https://i.ibb.co/sRtRZmV/Slider3.jpg"
-              alt=""
+              src={serviceImage}
+              alt={serviceName}
             />
           </div>
 
-          <div className="w-full flex flex-col justify-between sm:w-2/3 p-4">
-            <div>
+          <div className="w-full flex flex-col justify-between gap-6 sm:w-2/3 p-4">
+            <div className="space-y-3">
               <h1 className="text-xl font-bold text-gray-800 dark:text-white">
-                Service Name
+                {serviceName}
               </h1>
 
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                Service Area: Dhaka
-              </p>
               <h4 className="font-bold text-gray-700 dark:text-gray-200">
-                Price :$220
+                Price : ${price}
               </h4>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit In odit
+                <strong>Service Taking Date: </strong>{" "}
+                {new Date(serviceDate).toLocaleDateString()}
               </p>
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                <strong>Instruction: </strong> {instructions}
+              </p>
+            </div>
+
+            <div className="flex">
+              <Link
+                to={`/services-details/${serviceId}`}
+                className="rounded-md px-3.5 py-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-indigo-600 text-indigo-600">
+                <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-indigo-600 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                <span className="relative text-indigo-600 transition duration-300 group-hover:text-white ease">
+                  View Details
+                </span>
+              </Link>
             </div>
 
             <div className="flex flex-wrap items-center justify-between gap-4 mt-3">
@@ -38,17 +65,17 @@ const ServiceToDoCard = () => {
                 <div className="flex items-center gap-x-2">
                   <img
                     className="object-cover w-16 h-16 rounded-lg"
-                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=faceare&facepad=3&w=688&h=688&q=100"
-                    alt=""
+                    src={userImage}
+                    alt={userName}
                   />
 
                   <div>
                     <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
-                      Mia John
+                      {userName}
                     </h1>
 
                     <p className="text-base text-gray-500 dark:text-gray-400">
-                      miajohn@merakiui.com
+                      {userEmail}
                     </p>
                   </div>
                 </div>
@@ -60,7 +87,10 @@ const ServiceToDoCard = () => {
                       Update Your Service Status
                     </span>
                   </label>
-                  <select className="select select-bordered w-full max-w-xs">
+                  <select
+                    name="status"
+                    defaultValue={status}
+                    className="select select-bordered w-full max-w-xs">
                     <option value={"pending"}>Pending</option>
                     <option value={"working"}>Working</option>
                     <option value={"completed"}>Completed</option>
@@ -73,6 +103,10 @@ const ServiceToDoCard = () => {
       </div>
     </div>
   );
+};
+
+ServiceToDoCard.propTypes = {
+  bookedService: PropTypes.object,
 };
 
 export default ServiceToDoCard;
