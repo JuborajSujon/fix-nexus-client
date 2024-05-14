@@ -62,8 +62,6 @@ const Login = () => {
     }
   };
 
-  if (user || loading) return;
-
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-170px)]">
       <Helmet>
@@ -143,7 +141,7 @@ const Login = () => {
               to="/register"
               className="text-b300 underline"
               href="/sign-in">
-              Register here
+              Registration here
             </Link>
           </div>
         </section>

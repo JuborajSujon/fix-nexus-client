@@ -5,6 +5,7 @@ const ServiceCard = ({ service }) => {
   const {
     _id,
     serviceName,
+    serviceArea,
     imgURL,
     price,
     description,
@@ -26,6 +27,9 @@ const ServiceCard = ({ service }) => {
               <h2 className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline">
                 {serviceName}
               </h2>
+              <p className="mt-2 font-bold text-gray-600 dark:text-gray-400">
+                Service Area: {serviceArea}
+              </p>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                 {description.slice(0, 100)} ...
               </p>

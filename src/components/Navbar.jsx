@@ -256,7 +256,7 @@ const Navbar = () => {
               <div>
                 <button
                   onClick={handleLogout}
-                  className="px-2 rounded-md border border-orange-400 hover:bg-orange-400 hover:text-slate-900 text-base  font-semibold min-h-8 h-8 sm:min-h-10 sm:h-10">
+                  className="px-2 rounded-md border border-transparent hover:bg-orange-400 hover:text-slate-900 text-base  font-semibold min-h-8 h-8 sm:min-h-10 sm:h-10">
                   Logout
                 </button>
               </div>
@@ -278,7 +278,7 @@ const Navbar = () => {
           <div className="flex">
             <Link
               to="/login"
-              className="rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-indigo-600 text-indigo-600 dark:border-white dark:text-white">
+              className="rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-transparent text-indigo-600 dark:border-white dark:text-white">
               <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-indigo-600 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
               <span className="relative text-indigo-600 dark:text-orange-600 transition duration-300 group-hover:text-white ease">
                 Login

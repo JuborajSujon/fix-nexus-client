@@ -53,7 +53,7 @@ const ServicesDetails = () => {
                     </h1>
 
                     <p className="text-base text-gray-500 dark:text-gray-400">
-                      Service location : {serviceArea}
+                      Service Area : {serviceArea}
                     </p>
                   </div>
                 </div>
