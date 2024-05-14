@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import BookedServiceCard from "./BookedServiceCard";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAxiosGeneral from "../hooks/useAxiosGeneral";
+import { toast } from "react-toastify";
 
 const BookedServiceCardContainer = () => {
   const [bookedServices, setBookedServices] = useState([]);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const axiosGeneral = useAxiosGeneral();
 
   useEffect(() => {
     const getData = async () => {
@@ -15,6 +18,21 @@ const BookedServiceCardContainer = () => {
     };
     getData();
   }, []);
+
+  const handleCancel = async (id) => {
+    try {
+      const { data } = await axiosGeneral.delete(`/booked-services/${id}`);
+      if (data.acknowledged) {
+        const newBookedServices = bookedServices.filter(
+          (bookedService) => bookedService._id !== id
+        );
+        setBookedServices(newBookedServices);
+        toast.success("Booking Cancelled Successfully", { autoClose: 1500 });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="grid grid-cols-1 gap-12 px-4">
@@ -29,6 +47,7 @@ const BookedServiceCardContainer = () => {
         <BookedServiceCard
           key={bookedService._id}
           bookedService={bookedService}
+          handleCancel={handleCancel}
         />
       ))}
     </div>

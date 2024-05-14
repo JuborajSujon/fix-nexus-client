@@ -1,7 +1,8 @@
 import PropsTypes from "prop-types";
 import { Link } from "react-router-dom";
-const BookedServiceCard = ({ bookedService }) => {
+const BookedServiceCard = ({ bookedService, handleCancel }) => {
   const {
+    _id,
     serviceId,
     serviceName,
     serviceImage,
@@ -39,7 +40,7 @@ const BookedServiceCard = ({ bookedService }) => {
               </p>
             </div>
 
-            <div className="flex">
+            <div className="flex items-center gap-3">
               <Link
                 to={`/services-details/${serviceId}`}
                 className="rounded-md px-3.5 py-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-indigo-600 text-indigo-600">
@@ -48,6 +49,15 @@ const BookedServiceCard = ({ bookedService }) => {
                   View Details
                 </span>
               </Link>
+
+              <button
+                onClick={() => handleCancel(_id)}
+                className="px-5 py-1.5 relative rounded group overflow-hidden font-medium bg-purple-50 text-orange-600 inline-block">
+                <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-orange-600 group-hover:h-full opacity-90"></span>
+                <span className="relative group-hover:text-white">
+                  Cancle Booking
+                </span>
+              </button>
             </div>
           </div>
           <div className="md:w-1/3 md:flex md:justify-end">
@@ -94,6 +104,7 @@ const BookedServiceCard = ({ bookedService }) => {
 
 BookedServiceCard.propTypes = {
   bookedService: PropsTypes.object,
+  handleCancel: PropsTypes.func,
 };
 
 export default BookedServiceCard;
