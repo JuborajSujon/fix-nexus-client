@@ -233,7 +233,7 @@ const Navbar = () => {
         </div>
         <Link
           to={"/"}
-          className="btn btn-ghost hover:bg-slate-400 text-xl sm:text-2xl md:text-3xl lg:text-4xl italic font-bold  min-h-12 h-12 -ml-2 ">
+          className="btn btn-ghost hover:bg-slate-300 lg:text-4xl italic font-bold min-h-10 h-10 sm:min-h-12 sm:h-12 -ml-2 px-2 sm:px-4">
           <img
             className="w-28 sm:w-36"
             src="https://i.ibb.co/j5Sqs26/logo.png"
