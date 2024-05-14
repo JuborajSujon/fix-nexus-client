@@ -20,7 +20,7 @@ const ServiceToDo = () => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axiosSecure.get(`/booked-services/${user?.email}`);
-      // setBookedServices(data);
+      setBookedServices(data);
     };
     getData();
   }, []);

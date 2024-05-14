@@ -93,6 +93,14 @@ const AllServices = () => {
         </form>
       </div>
 
+      {services?.length === 0 && (
+        <div className="flex justify-center items-center py-32">
+          <h3 className="text-2xl font-semibold">
+            No Service Found, Try Again.
+          </h3>
+        </div>
+      )}
+
       {loading && (
         <div className="flex justify-center items-center py-32">
           <ColorRing
