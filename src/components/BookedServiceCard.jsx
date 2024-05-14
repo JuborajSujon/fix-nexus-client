@@ -18,7 +18,11 @@ const BookedServiceCard = ({ bookedService, handleCancel }) => {
     <div>
       <div className="flex flex-col lg:justify-between mx-auto overflow-hidden bg-white rounded-md shadow-lg dark:bg-gray-800 max-w-5xl">
         <div className="">
-          <img className="object-cover w-full h-64" src={serviceImage} alt="" />
+          <img
+            className="object-cover w-full h-64"
+            src={serviceImage}
+            alt={serviceName}
+          />
         </div>
 
         <div className="flex flex-col md:flex-row  md:justify-between dark:bg-gray-800 px-4 py-6 gap-4">
