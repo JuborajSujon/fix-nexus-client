@@ -3,12 +3,13 @@ import SectionTitle from "../components/SectionTitle";
 import ServiceToDoCard from "../components/ServiceToDoCard";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-import useAxiosGeneral from "../hooks/useAxiosGeneral";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ServiceToDo = () => {
   const [bookedServices, setBookedServices] = useState([]);
   const { user } = useAuth();
-  const axiosGeneral = useAxiosGeneral();
+
+  const axiosSecure = useAxiosSecure();
 
   // ensure that the new page starts at the top when navigating
   useEffect(() => {
@@ -18,9 +19,7 @@ const ServiceToDo = () => {
   // get data from the server
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axiosGeneral.get(
-        `/booked-services/${user?.email}`
-      );
+      const { data } = await axiosSecure.get(`/booked-services/${user?.email}`);
       setBookedServices(data);
     };
     getData();

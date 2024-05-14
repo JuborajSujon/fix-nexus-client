@@ -50,7 +50,7 @@ const ManageServicesCardContainer = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-4">
+    <div className="grid grid-cols-1 gap-10">
       {services?.map((service) => (
         <ManageServiceCard
           key={service._id}

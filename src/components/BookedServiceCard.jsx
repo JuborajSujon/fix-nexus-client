@@ -20,8 +20,8 @@ const BookedServiceCard = ({ bookedService }) => {
           <img className="object-cover w-full h-64" src={serviceImage} alt="" />
         </div>
 
-        <div className="flex flex-col md:flex-row dark:bg-gray-800 px-4 py-6 gap-4">
-          <div className="w-full flex flex-col justify-between gap-4 sm:w-2/3">
+        <div className="flex flex-col md:flex-row  md:justify-between dark:bg-gray-800 px-4 py-6 gap-4">
+          <div className="w-full flex flex-col justify-between gap-4 md:w-2/3">
             <div className="space-y-3">
               <h1 className="text-xl font-bold text-gray-800 dark:text-white">
                 {serviceName}
@@ -50,35 +50,38 @@ const BookedServiceCard = ({ bookedService }) => {
               </Link>
             </div>
           </div>
-          <div className="sm:w-1/3">
-            <h2 className="text-base font-medium text-gray-800 dark:text-white mb-3">
-              Service Provider
-            </h2>
-            <div className="flex items-center gap-x-2">
-              <img
-                className="object-cover w-16 h-16 rounded-lg"
-                src={providerImage}
-                alt={providerName}
-              />
+          <div className="md:w-1/3 md:flex md:justify-end">
+            <div>
+              <h2 className="text-base font-medium text-gray-800 dark:text-white mb-3">
+                Service Provider
+              </h2>
+              <div className="flex items-center gap-x-2">
+                <img
+                  className="object-cover w-[72px] h-[72px] rounded-lg"
+                  src={providerImage}
+                  alt={providerName}
+                />
 
-              <div>
-                <h1 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">
-                  {providerName}
-                </h1>
+                <div>
+                  <h1 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">
+                    {providerName}
+                  </h1>
 
-                <div className="text-center flex items-center mt-3">
-                  <p className="text-xs text-gray-400">Status:</p>
-                  <p
-                    className={`px-2 ml-1 rounded-md ${
-                      status === "Pending" && "text-blue-500 bg-blue-100/60"
-                    } ${
-                      status === "Working" &&
-                      "text-emerald-500 bg-emerald-100/60"
-                    } ${
-                      status === "Completed" && "text-pink-500 bg-pink-100/60"
-                    } text-sm`}>
-                    {status}
-                  </p>
+                  <div className="text-center flex flex-col items-center mt-1">
+                    <p className="text-sm text-gray-400">Status:</p>
+                    <p
+                      className={`px-2.5 ml-2 py-1 rounded-md ${
+                        status === "Pending" && "text-blue-500 bg-blue-100/60"
+                      } ${
+                        status === "Working" &&
+                        "text-emerald-500 dark:bg-green-100 bg-emerald-100/60"
+                      } ${
+                        status === "Completed" &&
+                        "text-pink-700 dark:bg-violet-100 bg-pink-100/60"
+                      } text-sm`}>
+                      {status}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
