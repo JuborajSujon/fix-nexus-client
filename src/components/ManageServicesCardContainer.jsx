@@ -51,6 +51,11 @@ const ManageServicesCardContainer = () => {
 
   return (
     <div className="grid grid-cols-1 gap-10">
+      {services?.length === 0 && (
+        <div className="flex justify-center items-center">
+          <h3 className="text-3xl">Yet no service added. Please add some.</h3>
+        </div>
+      )}
       {services?.map((service) => (
         <ManageServiceCard
           key={service._id}
