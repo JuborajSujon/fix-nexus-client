@@ -20,7 +20,7 @@ const BestPart = () => {
             <p className="mt-4 text-gray-600 dark:text-gray-300">
               Count on 24/7 support
             </p>
-            <div className="grid gap-6 mt-8 sm:grid-cols-2">
+            <div className="grid gap-3 sm:gap-6 mt-8 sm:grid-cols-2">
               <div className="flex items-center text-gray-800 -px-3 dark:text-gray-200">
                 <svg
                   className="w-5 h-5 mx-3"

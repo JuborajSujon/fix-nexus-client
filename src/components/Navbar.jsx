@@ -246,7 +246,7 @@ const Navbar = () => {
   return (
     <div
       onMouseLeave={handleMouseLeave}
-      className="navbar bg-white max-w-[1540px] mx-auto fixed z-10 dark:bg-slate-900 dark:text-slate-300 px-8">
+      className="navbar bg-white max-w-[1540px] mx-auto fixed z-10 dark:bg-slate-900 dark:text-slate-300  sm:px-8 px-2">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -263,7 +263,7 @@ const Navbar = () => {
         </div>
         <Link
           to={"/"}
-          className="btn btn-ghost hover:bg-slate-300 lg:text-4xl italic font-bold min-h-10 h-10 sm:min-h-12 sm:h-12 -ml-2 px-2 sm:px-4">
+          className="btn btn-ghost hover:bg-slate-300 lg:text-4xl italic font-bold min-h-10 h-10 sm:min-h-12 sm:h-12 -ml-4 sm:-ml-2 px-2 sm:px-4">
           <img
             className="w-28 sm:w-36"
             src="https://i.ibb.co/j5Sqs26/logo.png"
@@ -274,7 +274,7 @@ const Navbar = () => {
       <div className="navbar-center hidden md:flex">
         <ul className=" flex gap-2 text-sm font-semibold *:p-2 ">{navList}</ul>
       </div>
-      <div className="navbar-end  space-x-2">
+      <div className="navbar-end  sm:space-x-2">
         {/*Theme toggle Controller*/}
         <div className="">
           <ThemeController />
@@ -286,7 +286,7 @@ const Navbar = () => {
               <div>
                 <button
                   onClick={handleLogout}
-                  className="px-2 rounded-md border border-transparent hover:bg-orange-400 hover:text-slate-900 text-base  font-semibold min-h-8 h-8 sm:min-h-10 sm:h-10">
+                  className="px-1 sm:px-2 rounded-md border border-transparent hover:bg-orange-400 hover:text-slate-900 text-base  font-semibold min-h-8 h-8 sm:min-h-10 sm:h-10">
                   Logout
                 </button>
               </div>

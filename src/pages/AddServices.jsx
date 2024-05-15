@@ -47,7 +47,7 @@ const AddServices = () => {
       <Helmet>
         <title>FixNexus | Add New Service</title>
       </Helmet>
-      <section className="max-w-4xl  w-full p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+      <section className="max-w-4xl  w-full p-4 sm:p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
         <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 capitalize dark:text-white">
           Add New Service
         </h2>
@@ -56,7 +56,7 @@ const AddServices = () => {
           <div className="grid grid-cols-1 gap-3 md:gap-6 mt-4 sm:grid-cols-2">
             <div>
               <label
-                className="text-gray-700 font-bold text-base md:text-lg dark:text-gray-200"
+                className="text-gray-700 md:font-bold font-medium text-base md:text-lg  dark:text-gray-200"
                 htmlFor="serviceName">
                 Service Name
               </label>
@@ -65,13 +65,13 @@ const AddServices = () => {
                 type="text"
                 name="serviceName"
                 required
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                className="block w-full px-2 sm:px-4 py-1 sm:py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
 
             <div>
               <label
-                className="text-gray-700 font-bold text-base md:text-lg dark:text-gray-200"
+                className="text-gray-700 md:font-bold font-medium text-base md:text-lg dark:text-gray-200"
                 htmlFor="imgURL">
                 Image URL of the service
               </label>
@@ -80,13 +80,13 @@ const AddServices = () => {
                 type="text"
                 name="imgURL"
                 required
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                className="block w-full px-2 sm:px-4 py-1 sm:py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
 
             <div>
               <label
-                className="text-gray-700 font-bold text-base md:text-lg dark:text-gray-200"
+                className="text-gray-700 md:font-bold font-medium text-base md:text-lg dark:text-gray-200"
                 htmlFor="price">
                 Price
               </label>
@@ -94,12 +94,12 @@ const AddServices = () => {
                 id="price"
                 name="price"
                 type="text"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                className="block w-full px-2 sm:px-4 py-1 sm:py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
             <div>
               <label
-                className="text-gray-700 font-bold text-base md:text-lg dark:text-gray-200"
+                className="text-gray-700 md:font-bold font-medium text-base md:text-lg dark:text-gray-200"
                 htmlFor="serviceArea">
                 Service Area
               </label>
@@ -107,21 +107,21 @@ const AddServices = () => {
                 id="serviceArea"
                 name="serviceArea"
                 type="text"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                className="block w-full px-2 sm:px-4 py-1 sm:py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
           </div>
           <div className="mt-4">
             <label
-              className="text-gray-700 font-bold text-base md:text-lg dark:text-gray-200"
+              className="text-gray-700 md:font-bold font-medium text-base md:text-lg dark:text-gray-200"
               htmlFor="description">
               Description
             </label>
             <textarea
               id="description"
               name="description"
-              rows="4"
-              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              rows="3"
+              className="block w-full px-2 sm:px-4 py-1 sm:py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               required></textarea>
           </div>
 

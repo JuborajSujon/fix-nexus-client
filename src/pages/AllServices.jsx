@@ -64,7 +64,7 @@ const AllServices = () => {
 
       <SectionTitle title="All Services" />
 
-      <div className="px-4 flex items-center justify-between pb-7 -mt-6">
+      <div className="px-4 flex justify-center sm:justify-end pb-7 -mt-6">
         <h3 className="text-2xl font-semibold mb-4"></h3>
         <form onSubmit={handleSearch}>
           <label className="input input-bordered flex items-center max-w-sm w-full gap-2">

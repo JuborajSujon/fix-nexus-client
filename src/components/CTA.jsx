@@ -7,7 +7,7 @@ const CTA = () => {
             Get 25% off on your next service purchase
           </h2>
 
-          <p className=" text-xl max-w-2xl mt-4 text-slate-800 dark:text-gray-300">
+          <p className="text-lg sm:text-xl max-w-2xl mt-4 text-slate-800 dark:text-gray-300">
             Browse our list of services and select the repair you need. Book
             your appointment online and mention the promotion code during
             checkout.

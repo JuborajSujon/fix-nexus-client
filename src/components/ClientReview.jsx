@@ -1,8 +1,5 @@
-import { AiFillStar } from "react-icons/ai";
-
 // Import Swiper React components
 import { Navigation, Autoplay } from "swiper/modules";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -31,7 +28,7 @@ const ClientReview = () => {
       </div>
 
       <div className="flex justify-center relative mt-8">
-        <div className=" w-full px-6 py-6 ">
+        <div className=" w-full px-6 ">
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={50}

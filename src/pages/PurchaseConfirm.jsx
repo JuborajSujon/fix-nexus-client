@@ -67,11 +67,11 @@ const PurchaseConfirm = () => {
       <Helmet>
         <title>FixNexus | Purchase Confirmation</title>
       </Helmet>
-      <section className="max-w-7xl  w-full p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-        <h2 className="text-3xl font-semibold text-gray-700 capitalize dark:text-white mb-6">
+      <section className="max-w-7xl  w-full p-4 sm:p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+        <h2 className="sm:text-3xl text-xl font-semibold text-gray-700 capitalize dark:text-white mb-6">
           Purchase Confirmation
         </h2>
-        <div className="grid grid-cols-1 gap-6 mt-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 md:gap-6 mt-4 md:grid-cols-2">
           <div className=" py-10 rounded-xl">
             <img
               src={imgURL}

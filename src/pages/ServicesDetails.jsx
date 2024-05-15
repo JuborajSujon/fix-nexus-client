@@ -29,11 +29,11 @@ const ServicesDetails = () => {
         <div className="p-6 lg:max-w-7xl max-w-2xl max-lg:mx-auto">
           <div className="grid items-start grid-cols-1 lg:grid-cols-5 gap-12">
             <div className="lg:col-span-3 w-full lg:sticky top-0 text-center">
-              <div className="bg-gray-800 px-4 py-10 rounded-xl">
+              <div className="bg-gray-800 sm:px-4 p-1 sm:py-10 rounded-xl">
                 <img
                   src={imgURL}
                   alt="Product"
-                  className="w-4/5 rounded object-cover mx-auto"
+                  className="w-full sm:w-4/5 rounded-xl sm:rounded object-cover mx-auto"
                 />
               </div>
               <div>
@@ -42,13 +42,13 @@ const ServicesDetails = () => {
                 </p>
                 <div className="flex items-center gap-x-2">
                   <img
-                    className="object-cover w-28 h-28 rounded-lg"
+                    className="object-cover sm:w-28 sm:h-28 w-20 h-20 rounded-lg"
                     src={providerImage}
                     alt={providerName}
                   />
 
                   <div className="text-left">
-                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+                    <h1 className="text-lg sm:text-xl font-semibold text-gray-700 capitalize dark:text-white">
                       {providerName}
                     </h1>
 
@@ -61,8 +61,12 @@ const ServicesDetails = () => {
             </div>
 
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-semibold">{serviceName}</h2>
-              <p className=" text-4xl font-semibold mt-4">Price: ${price}</p>
+              <h2 className="text-xl sm:text-3xl font-semibold">
+                {serviceName}
+              </h2>
+              <p className=" text-xl sm:text-4xl font-semibold mt-4">
+                Price: ${price}
+              </p>
 
               <div className="flex space-x-2 mt-4">
                 <svg
@@ -103,16 +107,16 @@ const ServicesDetails = () => {
                 <h4 className="text-base">500 Reviews</h4>
               </div>
 
-              <div className="flex flex-wrap gap-4 mt-8">
+              <div className="flex flex-row gap-4 mt-8">
                 <Link
                   to={`/purchase/${_id}`}
-                  className="min-w-[200px] px-4 py-3 bg-orange-300 hover:bg-orange-400 text-black text-center text-sm font-semibold rounded">
+                  className="max-w-[200px] w-full  px-4 py-3 bg-orange-300 hover:bg-orange-400 text-black text-center text-sm font-semibold rounded">
                   Book Now
                 </Link>
 
                 <button
                   type="button"
-                  className="min-w-[200px] px-4 py-2.5 border border-yellow-300 bg-transparent dark:text-yellow-300 text-sm font-semibold rounded">
+                  className=" max-w-[200px] w-full px-4 py-2.5 border border-yellow-300 bg-transparent dark:text-yellow-300 text-sm font-semibold rounded">
                   Add to cart
                 </button>
               </div>
@@ -125,7 +129,7 @@ const ServicesDetails = () => {
                 <p className="mt-4">{description}</p>
 
                 <div className="mt-8">
-                  <div className="flex items-center justify-end gap-x-2">
+                  <div className="flex items-center sm:justify-end justify-start gap-x-2">
                     <img
                       className="object-cover w-12 h-12 rounded-full"
                       src={providerImage}
@@ -133,7 +137,7 @@ const ServicesDetails = () => {
                     />
 
                     <div>
-                      <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+                      <h1 className="text-sm sm:text-xl font-semibold text-gray-700 capitalize dark:text-white">
                         {providerName}
                       </h1>
                     </div>
