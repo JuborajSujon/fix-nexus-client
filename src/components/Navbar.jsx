@@ -58,6 +58,7 @@ const Navbar = () => {
           Services
         </NavLink>
       </li>
+
       {user && (
         <li className="relative">
           <span
@@ -126,6 +127,21 @@ const Navbar = () => {
           )}
         </li>
       )}
+
+      <li>
+        <NavLink
+          to="/chatbot"
+          onMouseOver={handleMouseEnterRemove}
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+              : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
+          }>
+          Chat Bot
+        </NavLink>
+      </li>
     </>
   );
 
@@ -208,6 +224,20 @@ const Navbar = () => {
               : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
           }>
           Service-To-Do
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/chatbot"
+          onMouseOver={handleMouseEnterRemove}
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-orange-600 px-2 py-1.5 dark:text-orange-400"
+              : "hover:text-slate-900 px-2 py-1.5 hover:bg-orange-400 rounded-md dark:text-orange-400 dark:hover:text-slate-900"
+          }>
+          Chat Bot
         </NavLink>
       </li>
     </>

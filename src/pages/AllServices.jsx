@@ -18,7 +18,7 @@ const AllServices = () => {
   // ensure that the new page starts at the top when navigating
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     const getData = async () => {

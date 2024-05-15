@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./providers/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "highlight.js/styles/github.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

@@ -13,6 +13,7 @@ import BookedService from "../pages/BookedService";
 import AllServices from "../pages/AllServices";
 import ServiceToDo from "../pages/ServiceToDo";
 import UpdateService from "../pages/UpdateService";
+import ChatBot from "../pages/ChatBot";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <AllServices />,
+      },
+      {
+        path: "/chatbot",
+        element: <ChatBot />,
       },
       {
         path: "/add-service",
