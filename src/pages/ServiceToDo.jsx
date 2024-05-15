@@ -19,7 +19,7 @@ const ServiceToDo = () => {
   // get data from the server
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axiosSecure.get(`/booked-services/${user?.email}`);
+      const { data } = await axiosSecure.get(`/services-to-do/${user?.email}`);
       setBookedServices(data);
     };
     getData();
