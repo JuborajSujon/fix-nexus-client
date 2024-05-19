@@ -14,9 +14,9 @@ Netlify Hosting : []()
 
 - **Intregated MongoDB Database**: Our website is integrated with MongoDB database for seamless data storage and retrieval.
 
--- **User** : Users can easily add, manage, and book services.
+- **User** : Users can easily add, manage, and book services.
 
--- **Provider** : Providers can easily add, manage, and book services and they can also manage their services with status
+- **Provider** : Providers can easily add, manage, and book services and they can also manage their services with status
 
 - **Responsive Design**: Our website is designed to be responsive across various devices, ensuring a consistent and user-friendly experience for all users.
 
