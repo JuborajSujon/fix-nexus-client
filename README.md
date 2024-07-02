@@ -6,36 +6,38 @@ Firebase Hosting : [https://fixnexus-aa0eb.web.app/](https://fixnexus-aa0eb.web.
 
 Netlify Hosting : [https://fixnexus.netlify.app/](https://fixnexus.netlify.app/)
 
+FixNexus server side repository : [https://github.com/JuborajSujon/fix-nexus-server.git](https://github.com/JuborajSujon/fix-nexus-server.git)
+
+## Project Overview
+User can Booked Service and Manage Services and service provider also Added service, update service, view details service and ordered service can update status. We use firebase authentication for user resgister, sign in, login also social login intregrating. A chatbot intregrade using by Google cloud API service.
+
 ## Features and Characteristics:
 
-- **Comprehensive Navigation**: Easily navigate through our website with dedicated sections for Home, Services, Add Service, Manage Services, Booked Service, All Services, Error Page, Login, Register, and Purchase Confirm. Users can also access Google.
+- **Comprehensive Service Management**: Users can easily add, manage, and book services. Providers can add, manage, book services, and manage their service status.
+  
+- **User Authentication and Security**: Secure registration, sign-in, and login via Firebase Authentication. Additional options for Google and GitHub sign-in for added convenience.
+  
+- **Responsive and Engaging User Experience**: Responsive design ensuring a consistent experience across various devices. Engaging animations and multiple theme options (light and dark mode) for a personalized and visually appealing user interface.
 
-- **User Authentication**: Utilizing Firebase Authentication, users can securely register, sign in, and login. Additionally, they have the option to sign in with Google or GitHub for added convenience.
+## Used Technology
+- **Frontend Development**: React, React DOM, React Router DOM, React Hook Form, React Icons, React Helmet Async, React Toastify, Lottie React, React Datepicker, React Loader Spinner, React Markdown
 
-- **Intregated MongoDB Database**: Our website is integrated with MongoDB database for seamless data storage and retrieval.
-
-- **User** : Users can easily add, manage, and book services.
-
-- **Provider** : Providers can easily add, manage, and book services and they can also manage their services with status
-
-- **Responsive Design**: Our website is designed to be responsive across various devices, ensuring a consistent and user-friendly experience for all users.
-
-- **Theme Selection**: Choose from a variety of themes, including light and dark mode, for a seamless and visually appealing user experience.
-
-- **Engaging Visuals**: Enhance user interaction with captivating animations powered by the tsparticles, animate.css, and aos npm packages.
-
-- **User-friendly Interface**: Our website is designed with a modern and intuitive user interface, ensuring a smooth and intuitive experience for all users.
-
-## Selected Categories Name:
-
-### Electronic Item Repairing Services
-
+- **User Authentication & Security** : Firebase
+  
+- **UI Components & Styling** : Tailwind CSS, DaisyUI
+  
+- **Development Tools** : Vite, ESLint, ESLint Plugins, PostCSS, Autoprefixer
+  
+- **Animations & Effects** : Lottie React, React Simple Typewriter, React Scroll Trigger
+  
+- **Additional Libraries** : Axios, Highlight.js, SweetAlert2, Swiper
+  
 ## Installation: :computer:
 
 1. Clone the repository from GitHub:
 
 ```
-git clone https://github.com/Porgramming-Hero-web-course/b9a11-client-side-JuborajSujon
+git clone https://github.com/JuborajSujon/fix-nexus-client.git
 
 
 ```
