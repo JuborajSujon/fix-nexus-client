@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-white px-4 dark:bg-gray-900">
+    <footer className="bg-white px-4 dark:bg-gray-900 py-5">
       <div className=" flex flex-col sm:flex-row sm:justify-between items-center text-center gap-2">
         <div className="">
           <Link to="/" className="cursor-pointer">
@@ -17,7 +17,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <p className="max-w-md text-gray-500 dark:text-gray-400">
+          <p className="max-w-md text-slate-800 dark:text-slate-300">
             <strong>Office Address.</strong> Level-4, 34, Awal Centre, Banani,
             Dhaka;
           </p>
@@ -28,7 +28,10 @@ const Footer = () => {
             className="mx-1 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 border-2 p-2 border-transparent hover:border-orange-400"
             target="_blank"
             aria-label="Reddit">
-            <FaFacebookF size={20} />
+            <FaFacebookF
+              size={20}
+              className="text-slate-800 dark:text-slate-300"
+            />
           </Link>
 
           <Link
@@ -36,7 +39,10 @@ const Footer = () => {
             className="mx-1 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 border-2 p-2 border-transparent hover:border-orange-400"
             target="_blank"
             aria-label="Facebook">
-            <FaLinkedin size={20} />
+            <FaLinkedin
+              size={20}
+              className="text-slate-800 dark:text-slate-300"
+            />
           </Link>
         </div>
       </div>
@@ -44,7 +50,7 @@ const Footer = () => {
       <hr className="h-px my-3 bg-gray-200 border-none dark:bg-gray-700" />
 
       <div className="text-center">
-        <p className="mb-0 text-slate-400">
+        <p className="mb-0 text-slate-800 dark:text-slate-300">
           {new Date().getFullYear()}@ FixNexus. Design with{" "}
           <IoIosHeart className="inline-block text-red-500" size={20} /> by{" "}
           <Link
